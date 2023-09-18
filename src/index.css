@@ -1,0 +1,104 @@
+/* App container */
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Movie list */
+.movie-list {
+  width: 30%;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.movie-list h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.movie-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.movie-list li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.movie-list li:hover {
+  background-color: #c0c0c0;
+}
+
+/* Movie details */
+.movie-details {
+  width: 65%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.movie-details h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.movie-details h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.movie-details p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.movie-details button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.movie-details button:hover {
+  background-color: #0056b3;
+}
+
+/* Favorites list */
+.favorites {
+  width: 30%;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.favorites h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.favorites ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.favorites li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
