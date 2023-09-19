@@ -38,7 +38,7 @@ useEffect(() => {
       // setItems(mappedItems);
 
       const numbersList = getFromLocalStorage('favorites') || [];
-console.log(numbersList);
+
 // Map each number to an object with isFavorite: true
       const mappedWithIsFavorite =mappedItems.map((mappedItem:ListItem) => ({
       ...mappedItem,
@@ -64,7 +64,7 @@ const [currentIdx, setCurrentIdx] = useState<number | null>(null);
       item.idx === idx ? { ...item, isFavorite: !item.isFavorite } : item
     )
   );
-    console.log(items);
+   
   };
   
   const chooseCurrent = (idx:number) => {
@@ -76,7 +76,7 @@ const [currentIdx, setCurrentIdx] = useState<number | null>(null);
         <h1>My Favorite Movies</h1>
       </header>
       <main>
-        <div className="appBody">
+        <div className="app-body">
       <MovieList items={items} chooseCurrent={chooseCurrent}/>
       {currentIdx !== null ? (
         <MovieDetails info={items[currentIdx]} toggleFavorite={toggleItemFavorite} />

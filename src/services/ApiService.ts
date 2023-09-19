@@ -25,7 +25,7 @@ class ApiService {
 
       let items = await response.json();
       items=items.results;
-      console.log(items);
+     
       items = items.map((item:any,idx:number) => ({
         ...item,idx
   
