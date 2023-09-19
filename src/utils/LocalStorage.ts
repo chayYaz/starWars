@@ -55,31 +55,4 @@ export function toggleObjectInListLocalStorage(key:string, objToToggle:any) {
 
 
 
-// export function addObjectToListLocalStorage(key:string, objectToAdd:any) {
-//   // Retrieve the existing list from local storage or initialize it as an empty array
-//   const existingList = getFromLocalStorage(key) || [];
 
-//   // Add the new object to the list
-//   existingList.push(objectToAdd);
-
-//   // Save the updated list back to local storage
-//   setInLocalStorage(key, existingList);
-// }
-
-// export function removeObjectFromListLocalStorage(key:string, objectIdToDelete:any) {
-//   // Retrieve the existing list from local storage or initialize it as an empty array
-//   const existingList = getFromLocalStorage(key) || [];
-
-//   // Find the index of the object to delete
-//   const indexToDelete = existingList.findIndex(
-//     (item:any) => item.id === objectIdToDelete
-//   );
-
-//   // If the object exists in the list, remove it
-//   if (indexToDelete !== -1) {
-//     existingList.splice(indexToDelete, 1);
-
-//     // Save the updated list back to local storage
-//     setInLocalStorage(key, existingList);
-//   }
-// }

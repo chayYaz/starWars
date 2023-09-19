@@ -12,7 +12,7 @@ interface ListToObjectProps {
 const ListToObject: React.FC<ListToObjectProps> = ({ items,chooseCurrent}) => {
  
   return (
-    <div>
+    <div className='movie-list'>
       {items.map((item) => (
         <MovieItem
         info={item} // Pass the sample movie object as the "movie" prop

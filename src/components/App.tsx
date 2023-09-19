@@ -4,7 +4,9 @@ import MovieDetails from "./MovieDetails"
 import { useState,useEffect } from "react";
 import ApiService from "../services/ApiService";
 import { toggleObjectInListLocalStorage,getFromLocalStorage } from '../utils/LocalStorage'
+import "./App.css"
 function App() {
+  
   interface ListItem {
     title: string;
     idx:number;
@@ -43,7 +45,8 @@ console.log(numbersList);
       isFavorite: numbersList.includes(mappedItem.idx)
       }));
       console.log(mappedWithIsFavorite);
-      setItems(mappedWithIsFavorite)
+      setItems(mappedWithIsFavorite);
+      setCurrentIdx(0);
     })
     .catch((error:Error) => {
       console.error('Error fetching movie data:', error);
@@ -65,12 +68,7 @@ const [currentIdx, setCurrentIdx] = useState<number | null>(null);
   };
   
   const chooseCurrent = (idx:number) => {
-
-    if(items){
     setCurrentIdx(idx);
-  }
-
-    
   };
   return (
     <div className="App">
@@ -80,7 +78,11 @@ const [currentIdx, setCurrentIdx] = useState<number | null>(null);
       <main>
         <div className="appBody">
       <MovieList items={items} chooseCurrent={chooseCurrent}/>
-      {currentIdx ? <MovieDetails info={items[currentIdx]} toggleFavorite={toggleItemFavorite}/>:<p>loading</p>}
+      {currentIdx !== null ? (
+        <MovieDetails info={items[currentIdx]} toggleFavorite={toggleItemFavorite} />
+    ) : 
+  (<p className="white-font">Loading</p>)}
+
       </div>
       </main>
     </div>

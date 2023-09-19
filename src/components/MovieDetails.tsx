@@ -39,21 +39,25 @@ const MovieDetails: React.FC<MovieItemProps> = ({ info ,toggleFavorite}) => {
       setIsFavorite(info.isFavorite);
     }, [info.isFavorite]);
   return (
-    <div className="movie-item">
-
-      <h3> title: {title}</h3>
-      
-      <h3>created: {created}</h3>
-      <h3>edited: {edited}</h3>
-      <h3>opening_crawl: {opening_crawl}</h3>
-      <h3>director: {director}</h3>
-      <h3>producer: {producer}</h3>
-      <h3>release date: {release_date}</h3>
-      <div>{isFavoriteState && <p>♥️</p>}</div>
+    
+    <div className="movie-details">
+      <div>
+      <h3 className="movie-title"> {title}</h3>
+      <p className='inlining'>
+      <p>Created: {created}</p>
+      <p>Edited: {edited}</p>
+      </p>
+      <h3 >Summary: <br/>{opening_crawl}</h3>
+      <p className='inlining'>
+      <p>Director: {director}</p>
+      <p>Producer: {producer}</p>
+      </p>
+      <h3>Release date: {release_date}</h3>
+      <div>{isFavoriteState && <p className='heart'>♥️</p>}</div>
       <button onClick={handleToggleFavorite}>
   {isFavoriteState ? 'Remove from Favorites' : 'Add to Favorites'}
 </button>
-
+</div>
     </div>
   );
 };
