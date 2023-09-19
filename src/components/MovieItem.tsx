@@ -1,32 +1,27 @@
 import React from 'react';
-
+import { useState } from 'react';
 interface MovieItemProps {
   info: {
     title: string;
-    opening_crawl: string;
+    idx:number
     isFavorite: boolean;
+    created:string;
+    edited:string;
+    opening_crawl:string;
+    director:string;
+    producer:string;
+    release_date:string;
   };
-  //its going to be an object with type:function
-  toggleFavorite: (info: { title: string; opening_crawl: string }) => void;
+  chooseCurrent: (idx: number) => void;
 }
 
-const MovieItem: React.FC<MovieItemProps> = ({ info, toggleFavorite }) => {
-  const { title, opening_crawl, isFavorite } = info;
-
-  const handleToggleFavorite = () => {
-    toggleFavorite({ title, opening_crawl });
-  };
-
+const MovieItem: React.FC<MovieItemProps> = ({ info,chooseCurrent}) => {
+  const { idx,title } = info;
+  const [index, setIndex] = useState(idx);
   return (
-    <div className="movie-item">
+    <div className="movie-item" onClick={()=>chooseCurrent(index)}>
       <h3>{title}</h3>
-      <p>{opening_crawl}</p>
-      <button
-        onClick={handleToggleFavorite}
-        className={isFavorite ? 'favorite-button active' : 'favorite-button'}
-      >
-        {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
-      </button>
+      
     </div>
   );
 };
