@@ -1,58 +1,76 @@
-import MovieItem from "./MovieItem";
+
 import MovieList from "./MovieList"
 import MovieDetails from "./MovieDetails"
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import ApiService from "../services/ApiService";
+import { toggleObjectInListLocalStorage,getFromLocalStorage } from '../utils/LocalStorage'
 function App() {
-  const sampleMoviesList = [
-    {
-      idx:0,
-    title: 'Star Wars: A New Hope',
-    opening_crawl: 'The Rebel Alliance makes a risky move to steal the plans for the Death Star, setting the stage for the epic saga to follow.',
-    isFavorite: false, // You can set the initial favorite status as needed
-    created:"hee",
-    edited:"hee",
-    director:"hee",
-    producer:"hee",
-    release_date:"hee"
-  },
-  {
-    title: 'movie 3',
-    idx:1,
-    opening_crawl: 'The Rebel Alliance makes a risky move to steal the plans for the Death Star, setting the stage for the epic saga to follow.',
-    isFavorite: false, // You can set the initial favorite status as needed
-    created:"hee",
-    edited:"hee",
-    director:"hee",
-    producer:"hee",
-    release_date:"hee"
-  },
-  {
-    title: 'movie 2',
-    idx:2,
-    opening_crawl: 'The Rebel Alliance makes a risky move to steal the plans for the Death Star, setting the stage for the epic saga to follow.',
-    isFavorite: false, // You can set the initial favorite status as needed
-    created:"hee",
-    edited:"hee",
-    director:"hee",
-    producer:"hee",
-    release_date:"hee"
-  }
-];
-  const [items, setItems] = useState(sampleMoviesList);
-  const [currentItem, setCurrentItem] = useState(sampleMoviesList[0]);
-  const toggleItemFavorite = (title: String) => {
+  interface ListItem {
+    title: string;
+    idx:number;
+    isFavorite: boolean;
+    created:string;
+    edited:string;
+    //the abstract
+    opening_crawl:string;
+    director:string;
+    producer:string;
+    release_date:string;
+    };
+  
+useEffect(() => {
+  ApiService.fetchMovies("https://swapi.dev/api/films/")
+    .then((movies) => {
+      const mappedItems = movies.map((item:any) => ({
+        title: item.title,
+        idx: item.idx,
+        isFavorite:item.isFavorite,
+        created:item.created,
+        edited:item.edited,
+        opening_crawl:item.opening_crawl,
+        director:item.director,
+        producer:item.producer,
+        release_date:item.release_date
+      }));
+      
+      // setItems(mappedItems);
+
+      const numbersList = getFromLocalStorage('favorites') || [];
+console.log(numbersList);
+// Map each number to an object with isFavorite: true
+      const mappedWithIsFavorite =mappedItems.map((mappedItem:ListItem) => ({
+      ...mappedItem,
+      isFavorite: numbersList.includes(mappedItem.idx)
+      }));
+      console.log(mappedWithIsFavorite);
+      setItems(mappedWithIsFavorite)
+    })
+    .catch((error:Error) => {
+      console.error('Error fetching movie data:', error);
+    });
+}, []);
+
+const [items, setItems] = useState<ListItem[]>([]);
+
+const [currentIdx, setCurrentIdx] = useState<number | null>(null);
+
+  const toggleItemFavorite = (idx: number) => {
+    toggleObjectInListLocalStorage("favorites",idx);
     setItems((prevItems) =>
-      prevItems.map((item,idx) =>
-        item.title === title ? { ...item, isFavorite: !item.isFavorite,id: idx} : item
-      )
-    );
+    prevItems.map((item) =>
+      item.idx === idx ? { ...item, isFavorite: !item.isFavorite } : item
+    )
+  );
     console.log(items);
   };
   
   const chooseCurrent = (idx:number) => {
-    alert("pressedd "+idx)
-    setCurrentItem(sampleMoviesList[idx]);
-    console.log(items);
+
+    if(items){
+    setCurrentIdx(idx);
+  }
+
+    
   };
   return (
     <div className="App">
@@ -60,16 +78,13 @@ function App() {
         <h1>My Favorite Movies</h1>
       </header>
       <main>
+        <div className="appBody">
       <MovieList items={items} chooseCurrent={chooseCurrent}/>
-      <MovieDetails info={currentItem} toggleFavorite={toggleItemFavorite}/>
+      {currentIdx ? <MovieDetails info={items[currentIdx]} toggleFavorite={toggleItemFavorite}/>:<p>loading</p>}
+      </div>
       </main>
     </div>
   );
 }
 
 export default App;
-
-
-
-
-

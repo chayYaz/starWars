@@ -1,9 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 interface MovieItemProps {
   info: {
     title: string;
-    
+    idx:number;
     isFavorite: boolean;
     created:string;
     edited:string;
@@ -13,13 +13,15 @@ interface MovieItemProps {
     release_date:string;
   };
 //its going to be an object with type:function
-toggleFavorite: (title:string) => void;
+toggleFavorite: (idx:number) => void;
 }
 
-const MovieItem: React.FC<MovieItemProps> = ({ info ,toggleFavorite}) => {
+const MovieDetails: React.FC<MovieItemProps> = ({ info ,toggleFavorite}) => {
+  
   const { 
-
-    title, 
+    
+    title,
+    idx, 
     isFavorite,
     created,
     edited,
@@ -29,9 +31,13 @@ const MovieItem: React.FC<MovieItemProps> = ({ info ,toggleFavorite}) => {
     release_date } = info;
     const [isFavoriteState, setIsFavorite] = useState(isFavorite);
     const handleToggleFavorite = () => {
-      toggleFavorite(title );
+      
+      toggleFavorite(idx);
       setIsFavorite(prev=>!prev);
     };
+    useEffect(() => {
+      setIsFavorite(info.isFavorite);
+    }, [info.isFavorite]);
   return (
     <div className="movie-item">
 
@@ -43,15 +49,13 @@ const MovieItem: React.FC<MovieItemProps> = ({ info ,toggleFavorite}) => {
       <h3>director: {director}</h3>
       <h3>producer: {producer}</h3>
       <h3>release date: {release_date}</h3>
-      <p>{isFavoriteState && <p>♥️</p>}</p>
-      <button
-        onClick={handleToggleFavorite}
-      >
-        
-        {isFavoriteState ? 'Remove from Favorites' : 'Add to Favorites'}
-      </button>
+      <div>{isFavoriteState && <p>♥️</p>}</div>
+      <button onClick={handleToggleFavorite}>
+  {isFavoriteState ? 'Remove from Favorites' : 'Add to Favorites'}
+</button>
+
     </div>
   );
 };
 
-export default MovieItem;
+export default MovieDetails;
