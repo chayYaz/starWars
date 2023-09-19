@@ -15,7 +15,7 @@ const ListToObject: React.FC<ListToObjectProps> = ({ items,chooseCurrent}) => {
     <div className='movie-list'>
       {items.map((item) => (
         <MovieItem
-        info={item} // Pass the sample movie object as the "movie" prop
+        info={item} 
        chooseCurrent={chooseCurrent}
       />
       ))}

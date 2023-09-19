@@ -1,17 +1,8 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
+import { ListItem } from '../interfaces/ListItem';
 interface MovieItemProps {
-  info: {
-    title: string;
-    idx:number;
-    isFavorite: boolean;
-    created:string;
-    edited:string;
-    opening_crawl:string;
-    director:string;
-    producer:string;
-    release_date:string;
-  };
+  info: ListItem
 //its going to be an object with type:function
 toggleFavorite: (idx:number) => void;
 }

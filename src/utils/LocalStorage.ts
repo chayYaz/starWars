@@ -1,4 +1,3 @@
-// localStorageUtil.js
 
 // Function to get data from local storage by key
 export function getFromLocalStorage(key:string) {

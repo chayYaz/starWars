@@ -4,8 +4,6 @@ interface MovieItemProps {
   info: {
     title: string;
     idx:number
-
-   
   };
   chooseCurrent: (idx: number) => void;
 }

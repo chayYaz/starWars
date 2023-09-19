@@ -5,21 +5,8 @@ import { useState,useEffect } from "react";
 import ApiService from "../services/ApiService";
 import { toggleObjectInListLocalStorage,getFromLocalStorage } from '../utils/LocalStorage'
 import "./App.css"
+import { ListItem } from "../interfaces/ListItem";
 function App() {
-  
-  interface ListItem {
-    title: string;
-    idx:number;
-    isFavorite: boolean;
-    created:string;
-    edited:string;
-    //the abstract
-    opening_crawl:string;
-    director:string;
-    producer:string;
-    release_date:string;
-    };
-  
 useEffect(() => {
   ApiService.fetchMovies("https://swapi.dev/api/films/")
     .then((movies) => {
@@ -34,12 +21,10 @@ useEffect(() => {
         producer:item.producer,
         release_date:item.release_date
       }));
-      
-      // setItems(mappedItems);
-
+    
       const numbersList = getFromLocalStorage('favorites') || [];
 
-// Map each number to an object with isFavorite: true
+// Map each number to an object with isFavorite
       const mappedWithIsFavorite =mappedItems.map((mappedItem:ListItem) => ({
       ...mappedItem,
       isFavorite: numbersList.includes(mappedItem.idx)
