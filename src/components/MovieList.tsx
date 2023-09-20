@@ -4,6 +4,7 @@ interface ListItem {
     title: string;
     idx:number;
   };
+  //this is not only a list
 interface ListToObjectProps {
   items: ListItem[];
   chooseCurrent: (idx: number) => void;

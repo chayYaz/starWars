@@ -1,4 +1,4 @@
-
+//utils is for reusable functions etc
 // Function to get data from local storage by key
 export function getFromLocalStorage(key:string) {
   try {

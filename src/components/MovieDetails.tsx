@@ -8,9 +8,7 @@ toggleFavorite: (idx:number) => void;
 }
 
 const MovieDetails: React.FC<MovieItemProps> = ({ info ,toggleFavorite}) => {
-  
   const { 
-    
     title,
     idx, 
     isFavorite,
@@ -31,7 +29,7 @@ const MovieDetails: React.FC<MovieItemProps> = ({ info ,toggleFavorite}) => {
     }, [info.isFavorite]);
   return (
     
-    <div className="movie-details">
+    <div className="movie-details margin10">
       <div>
       <h3 className="movie-title"> {title}</h3>
       <p className='inlining'>

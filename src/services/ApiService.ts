@@ -1,18 +1,4 @@
-interface ListItem {
-  title: string;
-  idx:number;
-  isFavorite: boolean;
-  created:string;
-  edited:string;
-  opening_crawl:string;
-  director:string;
-  producer:string;
-  release_date:string;
-  };
-interface ListToObjectProps {
-  items: ListItem[];
-  chooseCurrent: (idx: number) => void;
-}
+
 class ApiService {
   
   static async fetchMovies(apiUrl:string) {

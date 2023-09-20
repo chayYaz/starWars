@@ -1,12 +1,15 @@
 
-import MovieList from "./MovieList"
-import MovieDetails from "./MovieDetails"
 import { useState,useEffect } from "react";
 import ApiService from "../services/ApiService";
 import { toggleObjectInListLocalStorage,getFromLocalStorage } from '../utils/LocalStorage'
 import "./App.css"
 import { ListItem } from "../interfaces/ListItem";
+import AppComponent from "./AppComponent";
+//the logic of app
 function App() {
+  const [items, setItems] = useState<ListItem[]>([]);
+  const [currentIdx, setCurrentIdx] = useState<number | null>(null);
+
 useEffect(() => {
   ApiService.fetchMovies("https://swapi.dev/api/films/")
     .then((movies) => {
@@ -38,9 +41,6 @@ useEffect(() => {
     });
 }, []);
 
-const [items, setItems] = useState<ListItem[]>([]);
-
-const [currentIdx, setCurrentIdx] = useState<number | null>(null);
 
   const toggleItemFavorite = (idx: number) => {
     toggleObjectInListLocalStorage("favorites",idx);
@@ -56,21 +56,7 @@ const [currentIdx, setCurrentIdx] = useState<number | null>(null);
     setCurrentIdx(idx);
   };
   return (
-    <div className="App">
-      <header>
-        <h1>My Favorite Movies</h1>
-      </header>
-      <main>
-        <div className="app-body">
-      <MovieList items={items} chooseCurrent={chooseCurrent}/>
-      {currentIdx !== null ? (
-        <MovieDetails info={items[currentIdx]} toggleFavorite={toggleItemFavorite} />
-    ) : 
-  (<p className="white-font">Loading</p>)}
-
-      </div>
-      </main>
-    </div>
+    <AppComponent items={items} chooseCurrent={chooseCurrent} currentIdx={currentIdx} toggleItemFavorite={toggleItemFavorite}/>
   );
 }
 
