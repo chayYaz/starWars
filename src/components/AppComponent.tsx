@@ -1,9 +1,9 @@
 
-import { ListItem } from "../interfaces/ListItem";
+import { MovieInfo } from "../interfaces/MovieInfo";
 import MovieList from "./MovieList"
 import MovieDetails from "./MovieDetails"
 interface AppComponentProps {
-  items: ListItem[]; 
+  items: MovieInfo[]; 
   currentIdx: number | null;
   chooseCurrent: (idx: number) => void;
   toggleItemFavorite: (idx: number) => void;
@@ -23,7 +23,6 @@ const AppComponent:React.FC<AppComponentProps> = ({ items, currentIdx, chooseCur
         <MovieDetails info={items[currentIdx]} toggleFavorite={toggleItemFavorite} />
     ) : 
   (<p className="white-font">Loading...</p>)}
-
       </div>
       </main>
     </div>)}

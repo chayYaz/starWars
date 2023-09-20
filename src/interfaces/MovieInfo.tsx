@@ -1,12 +1,12 @@
-export interface ListItem {
+export interface MovieInfo{
   title: string;
   idx:number;
   isFavorite: boolean;
   created:string;
   edited:string;
   //the abstract
-  opening_crawl:string;
+  openingCrawl:string;
   director:string;
   producer:string;
-  release_date:string;
+  releaseDate:string;
   };

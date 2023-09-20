@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-interface MovieItemProps {
+interface MovieListItemProps {
   info: {
     title: string;
     idx:number
@@ -8,15 +8,15 @@ interface MovieItemProps {
   chooseCurrent: (idx: number) => void;
 }
 
-const MovieItem: React.FC<MovieItemProps> = ({ info,chooseCurrent}) => {
+const MovieListItem: React.FC<MovieListItemProps> = ({ info,chooseCurrent}) => {
   const { idx,title } = info;
+  //this is so I can send index to choosecurrent
   const [index, setIndex] = useState(idx);
   return (
-    <div className="movie-item" onClick={()=>chooseCurrent(index)}>
+    <div className="movie-list-item" onClick={()=>chooseCurrent(index)}>
       <h3>{title}</h3>
-      
     </div>
   );
 };
 
-export default MovieItem;
+export default MovieListItem;

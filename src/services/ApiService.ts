@@ -1,7 +1,7 @@
-
+//aoiservices is for logic and outsideconnections
 class ApiService {
   
-  static async fetchMovies(apiUrl:string) {
+  static async fetchInfo(apiUrl:string) {
     try {
       const response = await fetch(apiUrl);
 
@@ -11,10 +11,9 @@ class ApiService {
 
       let items = await response.json();
       items=items.results;
-     
+     //adding idx to every item
       items = items.map((item:any,idx:number) => ({
         ...item,idx
-  
       }));
       return items;
     } catch (error) {

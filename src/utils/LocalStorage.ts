@@ -6,6 +6,7 @@ export function getFromLocalStorage(key:string) {
     if (serializedData === null) {
       return null;
     }
+    //since it is received as string
     return JSON.parse(serializedData);
   } catch (error) {
     console.error('Error getting data from local storage:', error);
@@ -13,7 +14,7 @@ export function getFromLocalStorage(key:string) {
   }
 }
 
-// Function to set data in local storage by key
+// Function to set\add data in local storage by key
 export function setInLocalStorage(key:string, data:any) {
   try {
     const serializedData = JSON.stringify(data);
@@ -31,12 +32,12 @@ export function removeFromLocalStorage(key:string) {
     console.error('Error removing data from local storage:', error);
   }
 }
-
+//change list, if object exists remove it , if object does not exist add it.
 export function toggleObjectInListLocalStorage(key:string, objToToggle:any) {
  
   const existingList = getFromLocalStorage(key) || [];
 
-  // Check if the number is in the list
+  // Check if the object is in the list
   const objIndex = existingList.indexOf(objToToggle);
 
   if (objIndex !== -1) {

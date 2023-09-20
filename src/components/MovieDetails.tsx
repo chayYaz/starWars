@@ -1,27 +1,29 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
-import { ListItem } from '../interfaces/ListItem';
-interface MovieItemProps {
-  info: ListItem
+import { MovieInfo } from '../interfaces/MovieInfo';
+interface MovieDetailsProps {
+  info: MovieInfo
 //its going to be an object with type:function
 toggleFavorite: (idx:number) => void;
 }
 
-const MovieDetails: React.FC<MovieItemProps> = ({ info ,toggleFavorite}) => {
+const MovieDetails: React.FC<MovieDetailsProps> = ({ info ,toggleFavorite}) => {
   const { 
     title,
     idx, 
     isFavorite,
     created,
     edited,
-    opening_crawl,
+    openingCrawl,
     director,
     producer,
-    release_date } = info;
+    releaseDate } = info;
+    //so it will show in current page
     const [isFavoriteState, setIsFavorite] = useState(isFavorite);
     const handleToggleFavorite = () => {
-      
+      //change in ui list and in local storage
       toggleFavorite(idx);
+      //to make it show in current page
       setIsFavorite(prev=>!prev);
     };
     useEffect(() => {
@@ -36,12 +38,12 @@ const MovieDetails: React.FC<MovieItemProps> = ({ info ,toggleFavorite}) => {
       <p>Created: {created}</p>
       <p>Edited: {edited}</p>
       </p>
-      <h3 >Summary: <br/>{opening_crawl}</h3>
+      <h3 >Summary: <br/>{openingCrawl}</h3>
       <p className='inlining'>
       <p>Director: {director}</p>
       <p>Producer: {producer}</p>
       </p>
-      <h3>Release date: {release_date}</h3>
+      <h3>Release date: {releaseDate}</h3>
       <div>{isFavoriteState && <p className='heart'>♥️</p>}</div>
       <button onClick={handleToggleFavorite}>
   {isFavoriteState ? 'Remove from Favorites' : 'Add to Favorites'}

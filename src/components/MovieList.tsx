@@ -1,21 +1,22 @@
 import React from 'react';
-import MovieItem from './MovieItem';
+import MovieListItem from './MovieListItem';
+//it will get all the info but will type cast(change type)
 interface ListItem {
     title: string;
     idx:number;
   };
   //this is not only a list
-interface ListToObjectProps {
+  interface ListProps {
   items: ListItem[];
   chooseCurrent: (idx: number) => void;
 }
 
-const ListToObject: React.FC<ListToObjectProps> = ({ items,chooseCurrent}) => {
+const MovieList: React.FC<ListProps> = ({ items,chooseCurrent}) => {
  
   return (
     <div className='movie-list'>
       {items.map((item) => (
-        <MovieItem
+        <MovieListItem
         info={item} 
        chooseCurrent={chooseCurrent}
       />
@@ -24,4 +25,4 @@ const ListToObject: React.FC<ListToObjectProps> = ({ items,chooseCurrent}) => {
   );
 };
 
-export default ListToObject;
+export default MovieList;
