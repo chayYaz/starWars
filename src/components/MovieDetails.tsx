@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
+import stars from './img.jpg';
 import { MovieInfo } from '../interfaces/MovieInfo';
 interface MovieDetailsProps {
   info: MovieInfo
@@ -31,23 +32,27 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ info ,toggleFavorite}) => {
     }, [info.isFavorite]);
   return (
     
-    <div className="movie-details margin10">
-      <div>
-      <h3 className="movie-title"> {title}</h3>
+    <div className="movie-details margin10 background-image">
+       <h3 className="movie-title"> {title}</h3>
+      <div className="flexing">
+        <div className='movie-info'>
       <p className='inlining'>
       <p>Created: {created}</p>
       <p>Edited: {edited}</p>
       </p>
-      <h3 >Summary: <br/>{openingCrawl}</h3>
+      <p >{openingCrawl}</p>
       <p className='inlining'>
-      <p>Director: {director}</p>
-      <p>Producer: {producer}</p>
+     
       </p>
-      <h3>Release date: {releaseDate}</h3>
-      <div>{isFavoriteState && <p className='heart'>♥️</p>}</div>
-      <button onClick={handleToggleFavorite}>
+      <p>Release date: {releaseDate}</p>
+      
+      <div className='flexing'>{isFavoriteState && <p className='heart'>♥️</p>}
+      <button  className="favorite-button" onClick={handleToggleFavorite}>
   {isFavoriteState ? 'Remove from Favorites' : 'Add to Favorites'}
 </button>
+</div>
+</div>
+
 </div>
     </div>
   );

@@ -15,6 +15,7 @@ const MovieList: React.FC<ListProps> = ({ items,chooseCurrent}) => {
  
   return (
     <div className='movie-list'>
+      
       {items.map((item) => (
         <MovieListItem
         info={item} 

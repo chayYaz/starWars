@@ -12,12 +12,23 @@ interface AppComponentProps {
 const AppComponent:React.FC<AppComponentProps> = ({ items, currentIdx, chooseCurrent, toggleItemFavorite }) => {
   return (
 
-<div className="App">
-      <header>
-        <h1>My Favorite Movies</h1>
-      </header>
+<div className="App ">
+   
       <main>
-        <div className="app-body">
+        <div className="app-body container">
+        <div className="nav">
+        <div className="hamburger-menu" onClick={()=>{
+    const movieList = document.querySelector('.movie-list');
+    if (movieList) 
+    movieList.classList.toggle('show-menu');
+    
+}}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+        </div>
+       
+    </div>
       <MovieList items={items} chooseCurrent={chooseCurrent}/>
       {currentIdx !== null ? (
         <MovieDetails info={items[currentIdx]} toggleFavorite={toggleItemFavorite} />
