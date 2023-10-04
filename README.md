@@ -11,3 +11,5 @@ cd starWars
 npm install (For making the size of the project as small as possible I excluded the node modules)
 
 npm start
+![image](https://github.com/chayYaz/starWars/assets/89097888/3a1fe5d7-24c2-4b58-8b3d-c3173fc4d6af)
+
