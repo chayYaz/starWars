@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { useState,useEffect } from 'react';
-import stars from './img.jpg';
+
+import background from './starwarsbackground.jpg';
 import { MovieInfo } from '../interfaces/MovieInfo';
 interface MovieDetailsProps {
   info: MovieInfo
@@ -8,52 +10,54 @@ interface MovieDetailsProps {
 toggleFavorite: (idx:number) => void;
 }
 
-const MovieDetails: React.FC<MovieDetailsProps> = ({ info ,toggleFavorite}) => {
-  const { 
-    title,
-    idx, 
-    isFavorite,
-    created,
-    edited,
-    openingCrawl,
-    director,
-    producer,
-    releaseDate } = info;
-    //so it will show in current page
-    const [isFavoriteState, setIsFavorite] = useState(isFavorite);
-    const handleToggleFavorite = () => {
-      //change in ui list and in local storage
-      toggleFavorite(idx);
-      //to make it show in current page
-      setIsFavorite(prev=>!prev);
-    };
-    useEffect(() => {
-      setIsFavorite(info.isFavorite);
-    }, [info.isFavorite]);
-  return (
-    
-    <div className="movie-details margin10 background-image">
-       <h3 className="movie-title"> {title}</h3>
-      <div className="flexing">
-        <div className='movie-info'>
-      <p className='inlining'>
-      <p>Created: {created}</p>
-      <p>Edited: {edited}</p>
-      </p>
-      <p >{openingCrawl}</p>
-      <p className='inlining'>
-     
-      </p>
-      <p>Release date: {releaseDate}</p>
-      
-      <div className='flexing'>{isFavoriteState && <p className='heart'>♥️</p>}
-      <button  className="favorite-button" onClick={handleToggleFavorite}>
-  {isFavoriteState ? 'Remove from Favorites' : 'Add to Favorites'}
-</button>
-</div>
-</div>
 
-</div>
+const MovieDetails: React.FC<MovieDetailsProps> = ({ info, toggleFavorite }) => {
+  const { title, idx, isFavorite, created, edited, openingCrawl, director, producer, releaseDate } = info;
+
+  const [isFavoriteState, setIsFavorite] = useState(isFavorite);
+
+  const handleToggleFavorite = () => {
+    toggleFavorite(idx);
+    setIsFavorite((prev) => !prev);
+  };
+
+  useEffect(() => {
+    setIsFavorite(info.isFavorite);
+  }, [info.isFavorite]);
+
+  return  (
+    <div className="container mt-10">
+      <h3 className="text-uppercase text-black title-with-border display-2 font-weight-bold mx-auto">{title}</h3>
+      <div>
+        <div>
+          <p className="text-light light-font mx-auto">
+            Created: {created} | Edited: {edited}
+          </p>
+          <div
+            className="image-container mx-auto"
+            style={{
+              backgroundImage:`url(${background})`,
+              backgroundSize: 'cover', // Adjust as needed
+              backgroundPosition: 'center 40%', // Adjust as needed
+              width: '100%', // Set the width of the container
+              height: '180px', // Set the height of the container
+            }}
+          ></div>
+        </div>
+        <div className="mx-auto">
+          <p className="text-light light-font">{openingCrawl}</p>
+          <p className="text-light">Release date: {releaseDate}</p>
+          <div className="d-flex align-items-center justify-content-center">
+            {isFavoriteState && <p className="text-gold mr-2 heart">♥️</p>}
+            <button
+              className={`btn btn-warning favorite-button text-black ${isFavoriteState ? '' : ''}`}
+              onClick={handleToggleFavorite}
+            >
+              {isFavoriteState ? 'Remove from Favorites' : 'Add to Favorites'}
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

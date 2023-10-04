@@ -1,183 +1,56 @@
 
+body{
+  font-family: 'Tomorrow', sans-serif !important; 
+  font-weight: lighter; 
+  letter-spacing: 1px; 
+  background-color: #000 !important;
+  color: white !important;
+  margin:auto;
+  text-align: center !important;
+ 
+}
+.title-with-border {
+  -webkit-text-stroke: 2px #ff9900; /* Yellow border with 2px width */
+  
+}
 
-/* Show/hide the menu */
 .movie-list.show-menu {
   display: block;
 }
-.movie-list {
-  display: none;
-}
 
-/* Apply background color to the entire page */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0 auto;
-  padding: 0;
-  background-color: #000; /* Black background */
-  color: #fff; /* White text color */
-
-}
-
-/* Style the main container */
-.container {
-  display: flex;
-  
-  background-color: #fff; /* White background */
-  color: #000; /* Black text color */
-}
-
-/* Style the movie list */
 .movie-list {
   list-style: none;
   padding-top: 30px;
-  background-color: #000;
+ 
 }
 
-.movie-list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 1.4;
-  padding: 5px 9px; /* Equalize padding */
-  border-radius: 2px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
-  background-color: #fff;
-  margin: 10px 30px; /* Added margin */
-  width: 200px;
-  box-sizing: border-box; /* Include padding in width calculation */
+.custom-hover-bg-yellow:hover {
+  background-color: #ffc107 !important;
+}
+.display-2{
+ font-weight: bold !important;
+ line-height: 1 !important;
 }
 
-/* Style favorite button */
-.movie-list-item:hover/* Style the button */
-{
-  background-color: #1E3689; /* Blue background */
-  border: 1px solid #1E3689; /* Blue border */
-  color: #fff; /* White text color */
-  padding: 10px 20px; /* Adjust padding for a comfortable size */
-  border-radius: 4px; /* Slight border radius for a modern look */
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-  
-  /* Add a white shadow to improve contrast on a dark background */
-
+.btn{
+  font-weight: 700 !important;
+  border:none !important;
+  line-height: 1.2 !important;
 }
-
-
-
-
-/* Style movie details */
-.movie-details {
-  position: relative;
-  padding-top: 30px;
-}
-
-/* Style movie title in details */
-.movie-title {
-  font-size: 4rem;
-  font-weight: bold;
-  width: 90%;
-  line-height: 1.2;
-  margin: auto;
-  text-transform: uppercase; /* Uppercase text */
-  color: #000; /* Black text color */
-  text-shadow:
-  1px 0 0 #ffff00, /* Right */
-  0 1px 0 #ffff00, /* Bottom */
-  -1px 0 0 #ffff00, /* Left */
-  0 -1px 0 #ffff00; /* Top */
-  margin-bottom: 20px; /* Added margin */
-  border-bottom: 2px solid yellow; /* Yellow line underneath title */
-  padding-bottom: 10px; /* Spacing */
-}
-
-/* Style movie info in details */
-.movie-info {
-  font-size: 16px;
-  line-height: 1.5;
-  padding: 20px;
-  width:90%;
-  color: #fff; /* White text color */
-   /* Black with transparency for overlay effect */
-}
-
-/* Style details image */
-
-/* Style details button */
-/* Style the button */
-.movie-details button {
-  padding: 5px 10px;
-  background-color: #1E3689; /* Blue background */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.863);
-  max-height: 50px;
-  color: #fff; /* White text color */
-  padding: 10px;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  margin: 10px; /* Added margin */
-  border: none;
-}
-
-/* Change button text color to improve contrast */
-.movie-details button {
-  color: #fff; /* White text color on blue background */
-}
-
-/* Hover effect */
-.movie-details button:hover {
-  background-color: #1E3689; /* Darker blue on hover */
-  box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.5);
-  margin: 10px; /* Added margin */
-}
-
-/* Style heart icon */
-/* Style heart icon with a yellow outline */
-.heart {
-  font-size: 3rem;
-  color: #FFE500;
-  text-shadow: 2px 2px 4px #1e1e1e; 
-  padding: 10px; /* Added padding */
-  margin: 10px; /* Added margin */
-  display: inline-block;
-}
-
 
 .flexing {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-/* Add a background image with a black gradient overlay */
-.background-image {
-  /* Set the background image URL */
-  background-image: url('img.jpg'); /* Replace 'your-image.jpg' with your image path */
-  /* Ensure the image covers the container and scales as needed */
-  background-size: cover;
-  /* Create a linear gradient overlay with black color */
-  background: linear-gradient( rgb(0, 0, 0),rgb(0, 0, 0),rgba(0, 0, 0, 0.021)),
-              /* Add your background image here again for compatibility */
-              url('img.jpg'); /* Replace 'your-image.jpg' with your image path */
-  /* Position the background image and gradient */
-  background-position: center center;
-  /* Set the background to cover the entire container */
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* Set the background to be fixed so it doesn't scroll with content */
-  background-attachment: fixed;
-  /* Set the background to take up the full viewport height */
-  width: 600vh; /* Adjust as needed */
-}
-/* Style the navigation bar */
+
 .nav {
-  background-color: #ffffff; /* Blue background for navigation */
+  background-color: #ffffff; 
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Hamburger menu styles */
 .hamburger-menu {
   cursor: pointer;
   display: none;
@@ -190,50 +63,70 @@ body {
   background-color: #000000;
   margin: 3px 0;
 }
-
+.heart{
+margin: 1rem;
+color:#ffc107;
+font-size: 3rem;
+}
 /* Media query for smaller screens */
 @media (max-width: 768px) {
- 
-  .movie-info{
-    width:70%;
-    margin: auto;
-  }
-  .movie-title{
-    font-size: 3rem;
-      width:70%;
-      margin: auto;
-    
-  }
-  
-  /* Adjust styles for smaller screens here */
-  .container {
-    display: block;}
-  /* For example, you can modify font sizes or padding */
-  
 
-  /* Show the hamburger menu icon and hide the list items */
   .hamburger-menu {
     display: block;
   }
-
   .movie-list {
     padding: 60px 30px 90px 30px;
+    display: none;
   }
-  .movie-list-item{
-    margin:  10px auto;
-    box-shadow: none;
-  }
-  .movie-details{
-    width: 70%;
-    font-weight: 400;
-  }
-  .background-image{
-    width:fit-content;
-  }
+  
+ 
+}
+.text-yellow {
+  color: #ff9900;
 }
 
+.border-yellow {
+  border: 2px solid #ff9900;
+}
 
+.text-gold {
+  color: #ffe500;
+}
 
+.container {
+  padding-top: 30px;
+}
 
+.img-fluid {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.favorite-button {
+  box-shadow: inset 0 0 2px #000;
+  border-radius: 2px;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-light {
+  font-weight: 100 !important;
+  font-size: smaller !important; 
+  line-height: 1.3;
+}
+
+.movie-item{
+  width: 80%;
+}
+.text-light {
+  letter-spacing: 0.2px;
+}
+
+.text-yellow {
+  letter-spacing: 1px;
+}
 
 

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useState } from 'react';
 interface MovieListItemProps {
   info: {
@@ -13,8 +14,8 @@ const MovieListItem: React.FC<MovieListItemProps> = ({ info,chooseCurrent}) => {
   //this is so I can send index to choosecurrent
   const [index, setIndex] = useState(idx);
   return (
-    <div className="movie-list-item" onClick={()=>chooseCurrent(index)}>
-      <h3>{title}</h3>
+    <div className="btn text-black bg-white m-3 custom-hover-bg-yellow movie-item" onClick={()=>chooseCurrent(index)}>
+      <button className="btn font-weight-bold">{title}</button>
     </div>
   );
 };
